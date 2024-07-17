@@ -1,0 +1,427 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f4f5f8;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+    transition: transform 0.3s ease;
+}
+
+.shooter-welcome {
+    width: 150px;
+    margin: 0 auto;
+    display: flex;
+}
+
+#username, #level {
+    width: 300px;
+    height: 40px;
+    margin: 10px auto;
+    display: flex;
+    background-color: #D8D8D8;
+    border-radius: 8px;
+    padding: 10px;
+    position: relative;
+    top: -10px;
+    border: 2px solid #A4A4A4;
+}
+
+#level {
+    position: relative;
+    top: -30px;
+}
+
+.row, .row2 {
+    display: flex;
+    justify-content: center;
+    margin-top: -10px;
+}
+
+.row2 {
+    position: relative;
+    top: 15px;
+}
+
+.gun {
+    width: 100px;
+}
+
+.target {
+    width: 80px;
+}
+
+.checkbox {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    appearance: none;
+    background-color: #D8D8D8;
+    border: 2px solid #A4A4A4;
+    cursor: pointer;
+    position: relative;
+    outline: none;
+    margin-top: -5px;
+}
+
+.checkbox:checked {
+    background-color: #B48604;
+}
+
+.checkbox:checked::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    top: 3px;
+    left: 3px;
+    background-color: white;
+    border-radius: 50%;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 10px;
+}
+
+.item img {
+    margin-bottom: 10px;
+}
+
+.instruk {
+    padding: 13px 50px;
+    background-color: #8C3D0C;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border: 0;
+    margin-left: 5px;
+    border-radius: 8px;
+}
+
+.play {
+    padding: 13px 50px;
+    background-color: #018D00;
+    color: #fff;
+    font-size: 17px;
+    font-weight: 600;
+    border: 0;
+    margin-left: 5px;
+    border-radius: 8px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: 600;
+}
+
+.flex {
+    position: relative;
+    top: 40px;
+}
+
+.instruction-box {
+    display: none;
+    position: absolute;
+    top: 60%;
+    right: 10%;
+    width: 500px;
+    transform: translateY(-50%);
+    background-color: #2F2F2F;
+    border-radius: 8px;
+    padding: 20px;
+    height: 70vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+}
+
+h1{
+    margin-bottom: 10px;
+}
+
+p{
+    margin-bottom: 10px;
+}
+
+.close {
+    background-color: red;
+    padding: 7px 15px;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 20px;
+    position: absolute;
+    right: 5%;
+}
+
+#canvas {
+    display: none;
+   
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    margin: 0;  
+    gap: 0; 
+    bottom: 0;
+    top:0;   /* Menghilangkan margin */
+}
+
+.history{
+    width: 280px;
+    height: 600px; /* Match the height of the canvas */
+    background-color: black;
+    color: white;
+    padding: 20px;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.5);
+    display: none; /* Initially hidden */
+}
+
+.sort{
+    background-color: #D8D8D8;
+    border-radius: 8px;
+    border: 2px solid #A4A4A4;
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+}
+
+
+#gameContainer {
+    
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+#countdown {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 70px;
+    color: black;
+    background-color: rgba(255, 255, 255, 0.8);
+    width: 100%;
+    height: 100%; /* Adjust the height as needed */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+    text-align: center;
+    
+    z-index: 9999;
+}
+
+.game-over-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+}
+
+.game-over-popup h2 {
+    margin-top: 0;
+}
+
+.game-over-popup button {
+    margin: 10px;
+}
+
+.leaderboard-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.leaderboard-entry p {
+    margin: 0 10px;
+}
+
+.detail-button {
+    background-color: yellow;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 6px;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: bold;
+}
+
+.column-header {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+hr {
+    height: 3px;
+    border-top: 1px solid #ccc;
+   width: 100px;
+}
+
+.entry-content {
+    align-items: center;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.enusername{
+    font-weight: 600;
+    font-size: 20px;
+    
+}
+
+/* style.css */
+.popup-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.popup-inner {
+    text-align: center;
+    max-width: 500px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+.popup-title {
+    margin-bottom: 20px;
+    font-size: 3em;
+    color: #8C3D0C;
+}
+
+.popup-text {
+    margin-bottom: 10px;
+    font-size: 1.2em;
+}
+
+.popup-text span {
+    font-weight: bold;
+}
+
+.popup-buttons {
+    display: flex;
+    margin-top: 30px;
+    justify-content: space-around;
+}
+
+.popup-button {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.popup-button.restart {
+    background-color: #018D00;
+    color: white;
+    position: relative;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+.popup-button.save {
+    background-color: #8C3D0C;
+    color: white;
+    letter-spacing: 1px;
+    font-weight: 500;
+}
+
+
+.enscore{
+position: relative;
+top: 5px;
+}
+
+
+
+.countdown{
+    position: relative;
+    top:200px;
+}
+
+.timer {
+    display: none;
+}
+
+
+#pointer {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-image: url('./Sprites/pointer.png');
+    background-size: contain;
+    pointer-events: none; /* Mengabaikan interaksi mouse dengan elemen pointer */
+    display: none;
+}
+
+.info-box {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10;
+}
+
+
+@media screen and (max-width: 1366px) and (min-height: 768px) {
+    .container {
+        margin-top: 60px;
+    }
+
+    .instruction-box {
+        height: 60vh;
+        margin-top: -50px;
+    }
+}

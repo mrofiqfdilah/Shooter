@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shooter Game</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="Sprites/boom.png">
+</head>
+<body>
+    <div class="container" id="gameContainer">
+        <img src="Sprites/shooter.png" alt="" class="shooter-welcome"><br>
+        <form id="form" onsubmit="canvas(); return false;">
+        <input type="text" name="username" id="username" placeholder="Input Username"><br>
+        <select name="level" id="level">
+            <option selected>Select Level</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+
+        <div class="row">
+            <div class="item">
+                <img src="Sprites/gun1.png" class="gun" alt="">
+                <input type="checkbox" name="gun" class="checkbox gun-checkbox" value="gun1" id="gun">
+            </div>
+            <div class="item">
+                <img src="Sprites/gun2.png" class="gun" alt="">
+                <input type="checkbox" name="gun" class="checkbox gun-checkbox" value="gun2"  id="gun">
+            </div>
+        </div>
+
+        <div class="row2">
+            <div class="item">
+                <img src="Sprites/target2.png" class="target" alt="">
+                <input type="checkbox" name="target" class="checkbox target-checkbox" value="target2"  id="target">
+            </div>
+            <div class="item">
+                <img src="Sprites/target1.png" class="target" alt="">
+                <input type="checkbox" name="target" class="checkbox target-checkbox" value="target1" id="target">
+            </div>
+            <div class="item">
+                <img src="Sprites/target3.png" class="target" alt="">
+                <input type="checkbox" name="target" class="checkbox target-checkbox" value="target3" id="target">
+            </div>
+        </div>
+
+        <div class="flex">
+            <button type="submit" class="play">Play Game</button>
+            <button type="button" class="instruk">Instruction</button>
+        </div>
+    </form>
+    </div>
+    
+    <!-- Hidden instruction box -->
+    <div class="instruction-box" id="instructionBox">
+        <button class="close">X</button>
+        <h1>How to play the game</h1>
+        <p>1. Input Username</p>
+        <p>2. Select a level</p>
+        <p>3. Choose one gun and one target</p>
+        <p>4. Click 'Play Game' to start</p>
+        <p>5. Aim and shoot targets</p>
+        <p>6. Get as many points as possible</p>
+        <p>7. Enjoy!</p>
+    </div>
+
+    <div class="wrapper">
+       
+        <canvas id="canvas">
+        </canvas>
+        <div id="pointer"></div>
+        <div class="history" id="history">
+        
+        </div>
+    </div>
+
+    <div id="timer" class="timer"></div>
+   <div id="countdown" ><p class="countdown" ></p></div>
+   
+    
+
+    <script src="main.js"></script>
+</body>
+</html>
